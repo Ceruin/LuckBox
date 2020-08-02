@@ -10,7 +10,6 @@ public class MovementController : MonoBehaviour
     
 
     private Rigidbody rb;
-    private SpriteRenderer renderer;
     private bool isJumping = false;
     private bool isGrounded = true;
     private Vector3 move = Vector3.zero;
@@ -20,7 +19,6 @@ public class MovementController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        renderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -59,7 +57,7 @@ public class MovementController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.layer == LayerMask.NameToLayer(groundLayer) && !isGrounded)
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Ground") && !isGrounded)
         {
             isGrounded = true;
         }
@@ -68,6 +66,8 @@ public class MovementController : MonoBehaviour
     private void Flip()
     {
         isFacingRight = !isFacingRight;
-        renderer.flipX = isFacingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }
