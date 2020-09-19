@@ -29,6 +29,24 @@ public class GridCell : MonoBehaviour
 
         hitColliders.RemoveAll(p => p.gameObject.tag != "Cell");
 
+        AssignNeighbors(hitColliders);
+
+        string printNeighbors = string.Format(@"
+                Neighbors:
+                Left [{0}]
+                Right [{1}]
+                Up [{2}]
+                Down [{3}]",
+                this.neighbors.left != null ? this.neighbors.left.getPOS().ToString() : "",
+                this.neighbors.right != null ? this.neighbors.right.getPOS().ToString() : "",
+                this.neighbors.up != null ? this.neighbors.up.getPOS().ToString() : "",
+                this.neighbors.down != null ? this.neighbors.down.getPOS().ToString() : "");
+
+        print(printNeighbors);
+    }
+
+    private void AssignNeighbors(List<Collider> hitColliders)
+    {
         foreach (var hitCollider in hitColliders)
         {
             GridCell cell = hitCollider.gameObject.GetComponent<GridCell>();
@@ -56,22 +74,9 @@ public class GridCell : MonoBehaviour
                     neighbors.down = cell;
                 }
             }
-           
-            print("Found Cube @: " + cell.getPOS());           
-        }
 
-        string printNeighbors = string.Format(@"
-                Neighbors:
-                Left [{0}]
-                Right [{1}]
-                Up [{2}]
-                Down [{3}]",
-                this.neighbors.left != null ? this.neighbors.left.getPOS().ToString() : "",
-                this.neighbors.right != null ? this.neighbors.right.getPOS().ToString() : "",
-                this.neighbors.up != null ? this.neighbors.up.getPOS().ToString() : "",
-                this.neighbors.down != null ? this.neighbors.down.getPOS().ToString() : "");
-                
-        print(printNeighbors);
+            print("Found Cube @: " + cell.getPOS());
+        }
     }
 
     public Vector3 getPOS()

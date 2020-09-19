@@ -57,7 +57,7 @@ public class MovementController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Ground") && !isGrounded)
+        if (collision.collider.gameObject.layer == LayerMask.NameToLayer(groundLayer) && !isGrounded)
         {
             isGrounded = true;
         }

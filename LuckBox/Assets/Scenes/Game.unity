@@ -427,7 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseGridCell: {fileID: 1875790053222929658, guid: 2a469bfa1e8dd894e87270679cfb64e6,
     type: 3}
-  cellsToGenerate: 3
+  cellsToGenerate: 1
   gridCells: []
 --- !u!4 &200937219
 Transform:
@@ -2018,8 +2018,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40da7a6c94707ad41bc351d4c244eb0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
-  jumpHeight: 550
+  moveSpeed: 2
+  jumpHeight: 30
   groundLayer: Ground
 --- !u!1 &1579010855
 GameObject:
